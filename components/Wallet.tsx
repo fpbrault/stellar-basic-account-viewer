@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import * as wallet from "../lib/wallet";
 import * as account from "../lib/account";
+import Image from "next/image";
 import { Keypair } from "stellar-base";
 import { AccountDetails } from "../lib/account";
 
@@ -10,7 +11,7 @@ type WalletProps = {
 };
 
 export const Wallet: React.FC<WalletProps> = () => {
-  const [, setKeypair] = useState<Keypair>();
+  const [keypair, setKeypair] = useState<Keypair>();
   const [accountDetails, setAccountDetails] = useState<AccountDetails>();
 
   const connected = async (keypair: Keypair) => {
@@ -28,14 +29,58 @@ export const Wallet: React.FC<WalletProps> = () => {
               Stellar Account Viewer
             </h1>
             <div className="flex justify-center pt-4 mx-2">
-              <div className="flex items-center flex-col flex-wrap w-full mx-auto">
-                <div>
+              <div className="flex items-center flex-col flex-wrap w-full mx-auto text-left">
+                {!keypair ? (
+                  <div className="flex flex-col gap-2 max-w-sm w-full">
+                    <button
+                      className="btn btn-primary btn-outline btn-block"
+                      onClick={() => wallet.albedoWallet().then((keypair) => connected(keypair))}>
+                      <span className="flex flex-col items-end">
+                        <Image
+                          alt="albedo-logo"
+                          src="/images/albedo.svg"
+                          width={24}
+                          height={24}></Image>
+                      </span>
+                      Connect with Albedo
+                    </button>
+                    <button
+                      className="btn btn-primary btn-outline btn-block"
+                      onClick={() => wallet.rabetWallet().then((keypair) => connected(keypair))}>
+                      <div className="flex flex-col justify-around">
+                        <Image
+                          alt="rabet-logo"
+                          src="/images/rabet.svg"
+                          width={24}
+                          height={24}></Image>
+                      </div>
+                      Connect with Rabet
+                    </button>
+                    <button
+                      className="btn btn-primary btn-outline btn-block"
+                      onClick={() =>
+                        wallet.freighterWallet().then((keypair) => connected(keypair))
+                      }>
+                      <div className="flex flex-col justify-around">
+                        <Image
+                          alt="freighter-logo"
+                          src="/images/freighter.svg"
+                          width={24}
+                          height={24}></Image>
+                      </div>
+                      Connect with Freighter
+                    </button>
+                  </div>
+                ) : (
                   <button
                     className="btn btn-primary"
-                    onClick={() => wallet.albedoWallet().then((keypair) => connected(keypair))}>
-                    Connect with Albedo
+                    onClick={() => {
+                      setKeypair(undefined);
+                      setAccountDetails(undefined);
+                    }}>
+                    Log Out
                   </button>
-                </div>
+                )}
                 {accountDetails ? (
                   <div className="my-2">
                     <div className="pb-2 flex flex-col">

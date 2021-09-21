@@ -257,6 +257,11 @@
   resolved "https://registry.yarnpkg.com/@sqltools/formatter/-/formatter-1.2.3.tgz#1185726610acc37317ddab11c3c7f9066966bd20"
   integrity sha512-O3uyB/JbkAEMZaP3YqyHH7TMnex7tWyCbCI4EfJdOCoN6HIhqdJBWTM6aCCiWQ/5f5wxjgU735QAIpJbjDvmzg==
 
+"@stellar/freighter-api@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@stellar/freighter-api/-/freighter-api-1.1.2.tgz#9529352c7e4ac59087e14d16620d69322fca2e76"
+  integrity sha512-2vrPsOn1N3DYTff1763lM1eOy+LNKfkQPH5A3mXlKb3mDUK50wsyM6U03Y1DK/C/9dlMA49FspQ9Es2RF6NpPw==
+
 "@types/eventsource@^1.1.2":
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/@types/eventsource/-/eventsource-1.1.6.tgz#1864655db707dc6c9490efe2cd96bfb7441cd2ee"
