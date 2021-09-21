@@ -1,6 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useState } from "react";
 import * as wallet from "../lib/wallet";
-import Image from "next/image";
 import * as account from "../lib/account";
 import { Keypair } from "stellar-base";
 import { AccountDetails } from "../lib/account";
@@ -114,13 +114,17 @@ export const Wallet: React.FC<WalletProps> = () => {
                               }>
                               {asset.assetCode}{" "}
                             </a>
-                            <Image
-                              width={16}
-                              height={16}
-                              alt={asset.assetCode + "-asset-logo"}
-                              src="https://stellar.expert/img/vendor/stellar.svg"></Image>
                           </div>
 
+                          {asset.assetLogo ? (
+                            <div className="stat-figure text-primary">
+                              <img
+                                width="32px"
+                                height="32px"
+                                alt={asset.assetCode + "-asset-logo"}
+                                src={asset.assetLogo}></img>
+                            </div>
+                          ) : null}
                           <div className="stat-value truncate">{asset.balance}</div>
                           <div className="stat-desc text-xs truncate text-primary">
                             {asset.assetIssuer}
