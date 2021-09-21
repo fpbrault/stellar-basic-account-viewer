@@ -48,7 +48,6 @@ export async function freighterWallet(): Promise<Keypair> {
     return publicKey;
   };
   const result = await retrievePublicKey();
-  console.log(result);
 
   return Keypair.fromPublicKey(result);
 }

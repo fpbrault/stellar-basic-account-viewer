@@ -132,30 +132,6 @@ export const Wallet: React.FC<WalletProps> = () => {
                     </div>
                   </div>
                 ) : null}
-                {/*               <div>
-                <span className="text-base-content">Parent Account ID: </span>
-                <span className="badge badge-primary my-1">
-                  {accountDetails?.sponsor}
-                </span>
-              </div> */}
-                {/* <div className="grid grid-cols-2 gap-2 mx-auto">
-                <div className="card bordered my-2 shadow-2xl bg-primary max-w-lg w-full text-base-content">
-                  <div className="card-body">
-                    <div className="card-title">Keypair:</div>
-                    <div className="overflow-auto max-h-64 bg-base-100 rounded-lg border-2 p-1">
-                      <pre>{JSON.stringify(keypair, null, 2)}</pre>
-                    </div>
-                  </div>
-                </div>
-                <div className="card bordered my-2 shadow-2xl bg-primary max-w-lg w-full text-base-content">
-                  <div className="card-body">
-                    <div className="card-title">Account Details:</div>
-                    <div className="overflow-auto max-h-64 bg-base-100 rounded-lg border-2 p-1">
-                      <pre>{JSON.stringify(accountDetails, null, 2)}</pre>
-                    </div>
-                  </div>
-                </div>
-              </div> */}
                 <div className="flex justify-center flex-wrap flex-row stats gap-2 max-w-screen-xl mx-auto py-4 ">
                   {accountDetails?.balances
                     ? accountDetails.balances.map((asset) => (
