@@ -3,7 +3,7 @@ import { Wallet } from "../components/Wallet";
 
 const Home: NextPage = () => {
   return (
-    <div data-theme="light" className="bg-base-200">
+    <div data-theme="stellar" className="bg-base-200">
       <Wallet />
     </div>
   );
