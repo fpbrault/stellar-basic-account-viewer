@@ -23,7 +23,6 @@ interface ABC {
 
 export async function getAccountDetails(keypair: Keypair): Promise<AccountDetails> {
   const account = await server.loadAccount(keypair.publicKey());
-  console.log(account);
 
   const assetMetadata: { key: string; assetCode: string; assetLogo: string }[] = [];
   const assets = account.balances.map((x) => {
@@ -42,11 +41,9 @@ export async function getAccountDetails(keypair: Keypair): Promise<AccountDetail
     }
   }
 
-  console.log(assets);
   await fetch("https://api.stellar.expert/explorer/public/asset/meta?" + assets.join("&"))
     .then((res) => res.json())
     .then((json) => {
-      console.log(json);
       foo(json._embedded.records);
     });
 
@@ -73,7 +70,6 @@ export async function getAccountDetails(keypair: Keypair): Promise<AccountDetail
     .limit(1)
     .call()
     .then(function (r) {
-      console.log(r);
       createdAt = r.records[0].created_at;
       createdBy = r.records[0].source_account;
     });
