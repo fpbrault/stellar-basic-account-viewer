@@ -105,9 +105,22 @@ export const Wallet: React.FC<WalletProps> = () => {
                           "https://stellar.expert/explorer/public/account/" +
                           accountDetails?.accountId
                         }>
-                        <span className="text-primary-content break-all lg:break-normal rounded bg-primary shadow p-1 text-xs hover:bg-primary-content hover:text-primary transition-colors">
-                          {accountDetails?.accountId}
-                        </span>{" "}
+                        <span className="inline-block text-primary-content break-all lg:break-normal rounded-xl bg-primary shadow p-1 text-xs hover:bg-primary-content hover:text-primary transition-colors">
+                          {accountDetails?.accountId}{" "}
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="inline-block h-4 w-4 align-top"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                            />
+                          </svg>
+                        </span>
                       </a>
                     </div>
                     <div className="pb-2 flex flex-col">
@@ -119,16 +132,27 @@ export const Wallet: React.FC<WalletProps> = () => {
                           "https://stellar.expert/explorer/public/account/" +
                           accountDetails?.createdBy
                         }>
-                        <span className="text-primary-content break-all lg:break-normal rounded bg-primary shadow p-1 text-xs hover:bg-primary-content hover:text-primary transition-colors">
-                          {accountDetails?.createdBy}
+                        <span className="inline-block text-primary-content break-all lg:break-normal rounded-xl bg-primary shadow p-1 text-xs hover:bg-primary-content hover:text-primary transition-colors">
+                          {accountDetails?.createdBy}{" "}
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="inline-block h-4 w-4 align-top"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                            />
+                          </svg>
                         </span>
                       </a>
                     </div>
                     <div className="pb-2 flex flex-col">
                       <span className="text-base-content">Creation Date: </span>
-                      <span className="text-primary-content break-all lg:break-normal rounded bg-primary shadow p-1 text-xs">
-                        {accountDetails?.createdAt}
-                      </span>
+                      <span className="badge badge-primary">{accountDetails?.createdAt}</span>
                     </div>
                   </div>
                 ) : null}
@@ -146,7 +170,20 @@ export const Wallet: React.FC<WalletProps> = () => {
                                 "-" +
                                 asset.assetIssuer
                               }>
-                              {asset.assetCode}{" "}
+                              {asset.assetCode}
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="inline h-4 w-4 align-text-top"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth="2"
+                                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                                />
+                              </svg>
                             </a>
                           </div>
 
