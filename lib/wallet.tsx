@@ -6,14 +6,10 @@ import { Keypair } from "stellar-base";
 export async function albedoWallet(): Promise<Keypair> {
   const token = crypto.randomBytes(48).toString("hex");
   const result = await albedo.publicKey({
-    token: token,
+    token: token
   });
 
-  const isValid = verifyMessageSignature(
-    result.pubkey,
-    token,
-    result.signature
-  );
+  const isValid = verifyMessageSignature(result.pubkey, token, result.signature);
   if (!isValid) {
     throw new Error("Albedo message signature is not valid");
   }
