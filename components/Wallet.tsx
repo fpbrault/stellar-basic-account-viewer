@@ -31,15 +31,45 @@ export const Wallet: React.FC<WalletProps> = () => {
                   onClick={() => wallet.albedoWallet().then((keypair) => connected(keypair))}>
                   Connect with Albedo
                 </button>
-              </div>{" "}
-              <div className="my-2">
-                <div className="pb-2">
-                  <span className="text-base-content">Account ID: </span>
-                  <span className="text-primary break-all max-w-xs">
-                    {accountDetails?.accountId}
-                  </span>
-                </div>
               </div>
+              {accountDetails ? (
+                <div className="my-2">
+                  <div className="pb-2 flex flex-col">
+                    <span className="text-base-content">Account ID: </span>
+                    <span className="text-primary-content break-all lg:break-normal rounded bg-primary shadow p-1 text-xs hover:bg-primary-content hover:text-primary transition-colors">
+                      <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href={
+                          "https://stellar.expert/explorer/public/account/" +
+                          accountDetails?.accountId
+                        }>
+                        {accountDetails?.accountId}
+                      </a>
+                    </span>
+                  </div>
+                  <div className="pb-2 flex flex-col">
+                    <span className="text-base-content">Parent Account Id: </span>
+                    <span className="text-primary-content break-all lg:break-normal rounded bg-primary shadow p-1 text-xs hover:bg-primary-content hover:text-primary transition-colors">
+                      <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href={
+                          "https://stellar.expert/explorer/public/account/" +
+                          accountDetails?.createdBy
+                        }>
+                        {accountDetails?.createdBy}
+                      </a>
+                    </span>
+                  </div>
+                  <div className="pb-2 flex flex-col">
+                    <span className="text-base-content">Creation Date: </span>
+                    <span className="text-primary-content break-all lg:break-normal rounded bg-primary shadow p-1 text-xs">
+                      {accountDetails?.createdAt}
+                    </span>
+                  </div>
+                </div>
+              ) : null}
               {/*               <div>
                 <span className="text-base-content">Parent Account ID: </span>
                 <span className="badge badge-primary my-1">
