@@ -23,7 +23,7 @@ export const Wallet: React.FC<WalletProps> = () => {
     <div className="flex flex-col text-neutral bg-base-content">
       <div className="min-h-screen pt-0">
         <div className="flex flex-col justify-center w-full ">
-          <div className="text-center shadow-2xl max-w-6xl min-h-screen w-full mx-auto bg-base-200">
+          <div className="shadow-2xl max-w-6xl min-h-screen w-full mx-auto bg-base-200">
             <h1 className="mb-5 text-3xl sm:text-5xl font-bold text-center pt-8">
               Stellar Account Viewer
             </h1>
