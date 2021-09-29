@@ -24,42 +24,57 @@ export async function albedoWallet(): Promise<Keypair> {
   return Keypair.fromPublicKey(result.pubkey);
 }
 
-export async function freighterWallet(): Promise<Keypair> {
-  const isInstalled = await freighter.isConnected();
-
-  if (!isInstalled) {
-    throw new Error("Freighter is not installed");
+export class FreighterWallet {
+  static async available(): Promise<boolean> {
+    const isInstalled = await freighter.isConnected();
+    return isInstalled;
   }
 
-  const retrievePublicKey = async () => {
-    let publicKey = "";
-    let error = "";
+  static async connectWallet(): Promise<Keypair> {
+    const isInstalled = freighter.isConnected();
 
-    try {
-      publicKey = await freighter.getPublicKey();
-    } catch (e) {
-      throw new Error("Cannot retrieve public key");
+    if (!isInstalled) {
+      throw new Error("Freighter is not installed");
     }
 
-    if (error) {
-      return error;
-    }
+    const retrievePublicKey = async () => {
+      let publicKey = "";
+      let error = "";
 
-    return publicKey;
-  };
-  const result = await retrievePublicKey();
+      try {
+        publicKey = await freighter.getPublicKey();
+      } catch (e) {
+        throw new Error("Cannot retrieve public key");
+      }
 
-  return Keypair.fromPublicKey(result);
+      if (error) {
+        return error;
+      }
+
+      return publicKey;
+    };
+    const result = await retrievePublicKey();
+
+    return Keypair.fromPublicKey(result);
+  }
 }
 
-export async function rabetWallet(): Promise<Keypair> {
-  const rabet = window.rabet || {};
-
-  if (!window.rabet) {
-    console.error("Rabet is not installed");
-    throw new Error("Rabet is not installed");
+export class RabetWallet {
+  static available(): boolean {
+    if (window) {
+      const rabet = window.rabet;
+      if (!rabet) {
+        return false;
+      }
+      return true;
+    }
+    return false;
   }
 
-  const result = await rabet.connect();
-  return Keypair.fromPublicKey(result.publicKey);
+  static async connectWallet(): Promise<Keypair> {
+    const rabet = window.rabet || {};
+
+    const result = await rabet.connect();
+    return Keypair.fromPublicKey(result.publicKey);
+  }
 }
